@@ -11,7 +11,6 @@ private:
 public:
 	Player(Renderer* renderer, int x, int y);
 	void GetEntity(Renderer* renderer, SDL_RendererFlip flip);
-	int x, y;
-	int w, h;
+	SDL_Rect* playerRect;
 };
 

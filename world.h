@@ -19,7 +19,9 @@ private:
 	void CreatePlayer(Renderer* renderer);
 	void CreateGround(Renderer* renderer, Window* window);
 	void CreatePlatforms(Renderer* renderer);
+
 	SDL_RendererFlip MovePlayer(Player* player, const Uint8 previousInput);
+	void CheckCollision();
 
 public:
 	void StartWorld(Renderer* renderer, Window* window);

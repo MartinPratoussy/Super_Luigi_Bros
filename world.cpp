@@ -30,39 +30,46 @@ SDL_RendererFlip World::MovePlayer(Player* player, const Uint8 previousInput)
     SDL_RendererFlip flip = SDL_FLIP_NONE;
     // Vertical deplacement
     if (currentKeyStates[SDL_SCANCODE_UP]) {
-        player->y--;
+        player->playerRect->y--;
     }
     else if (currentKeyStates[SDL_SCANCODE_DOWN]) {
-        player->y++;
+        player->playerRect->y++;
     }
     // Horizontal deplacement
     else if (currentKeyStates[SDL_SCANCODE_LEFT]) {
-        player->x--;
+        player->playerRect->x--;
         flip = (previousInput == SDL_SCANCODE_RIGHT) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE;
     }
     else if (currentKeyStates[SDL_SCANCODE_RIGHT]) {
-        player->x++;
+        player->playerRect->x++;
         flip = (previousInput == SDL_SCANCODE_LEFT) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE;
     }
     // Diagonal deplacement Up
     else if (currentKeyStates[SDL_SCANCODE_UP] && currentKeyStates[SDL_SCANCODE_LEFT]) {
-        player->y--;
-        player->x--;
+        player->playerRect->y--;
+        player->playerRect->x--;
     }
     else if (currentKeyStates[SDL_SCANCODE_UP] && currentKeyStates[SDL_SCANCODE_RIGHT]) {
-        player->y--;
-        player->x++;
+        player->playerRect->y--;
+        player->playerRect->x++;
     }
     // Diagonal deplacement Down
     else if (currentKeyStates[SDL_SCANCODE_DOWN] && currentKeyStates[SDL_SCANCODE_LEFT]) {
-        player->y++;
-        player->x--;
+        player->playerRect->y++;
+        player->playerRect->x--;
     }
     else if (currentKeyStates[SDL_SCANCODE_DOWN] && currentKeyStates[SDL_SCANCODE_RIGHT]) {
-        player->y++;
-        player->x++;
+        player->playerRect->y++;
+        player->playerRect->x++;
     }
     return flip;
+}
+
+void World::CheckCollision()
+{
+    if (SDL_HasIntersection(this->ground->groundRect, this->player->playerRect)) {
+        this->player->playerRect->y--;
+    }
 }
 
 void World::StartWorld(Renderer* renderer, Window* window)
@@ -98,7 +105,7 @@ void World::StartWorld(Renderer* renderer, Window* window)
             platform->GetEntity(renderer);
         }
         this->player->GetEntity(renderer, MovePlayer(player, previousInput));
-
+        CheckCollision();
 
         SDL_Delay(8);
         SDL_RenderPresent(renderer->renderer);
