@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['_7erenderer_64',['~Renderer',['../class_renderer.html#afeee408862d5bd6255a6882d47e6d5cd',1,'Renderer']]],
-  ['_7ewindow_65',['~Window',['../class_window.html#a245d821e6016fa1f6970ccbbedd635f6',1,'Window']]]
+  ['window_85',['Window',['../class_window.html#a74e6087da23d3c24e9fac0245e5ec92c',1,'Window']]]
 ];

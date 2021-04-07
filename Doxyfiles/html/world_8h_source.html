@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Super Luigi Bros.: world.h Source File</title>
+<title>Super Luigi Bros.: D:/Documents/Dossier Martin/Divers/Super_Luigi_Bros/world.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -64,31 +64,48 @@ $(function() {
 
 <div class="header">
   <div class="headertitle">
-<div class="title">world.h</div>  </div>
+<div class="title">D:/Documents/Dossier Martin/Divers/Super_Luigi_Bros/world.h</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a href="world_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="player_8h.html">player.h</a>&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="class_world.html">    5</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_world.html">World</a></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <a class="code" href="class_player.html">Player</a>* player;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="player_8h.html">player.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="platform_8h.html">platform.h</a>&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="background_8h.html">background.h</a>&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ground_8h.html">ground.h</a>&quot;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordtype">void</span> CreatePlayer(<a class="code" href="class_renderer.html">Renderer</a>* renderer);</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">void</span> RenderBackground(<a class="code" href="class_renderer.html">Renderer</a>* renderer, <a class="code" href="class_texture.html">Texture</a>* backgroundTexture, SDL_Rect* destRect);</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">void</span> MovePlayer(<a class="code" href="class_player.html">Player</a>* player);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_world.html#ad033f16454454d3ccfd3d9e0b65c6e6a">StartWorld</a>(<a class="code" href="class_renderer.html">Renderer</a>* renderer, <a class="code" href="class_window.html">Window</a>* window);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;};</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_world.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_world.html">World</a></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="class_background.html">Background</a>* background;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="class_player.html">Player</a>* player;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="class_ground.html">Ground</a>* ground;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    std::vector&lt;Platform*&gt; platforms;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">void</span> CreateBackground(<a class="code" href="class_renderer.html">Renderer</a>* renderer, <a class="code" href="class_window.html">Window</a>* window);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">void</span> CreatePlayer(<a class="code" href="class_renderer.html">Renderer</a>* renderer);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">void</span> CreateGround(<a class="code" href="class_renderer.html">Renderer</a>* renderer, <a class="code" href="class_window.html">Window</a>* window);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">void</span> CreatePlatforms(<a class="code" href="class_renderer.html">Renderer</a>* renderer);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    SDL_RendererFlip MovePlayer(<a class="code" href="class_player.html">Player</a>* player, <span class="keyword">const</span> Uint8 previousInput);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> CheckCollision();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_world.html#ad033f16454454d3ccfd3d9e0b65c6e6a">StartWorld</a>(<a class="code" href="class_renderer.html">Renderer</a>* renderer, <a class="code" href="class_window.html">Window</a>* window);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;};</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="ttc" id="abackground_8h_html"><div class="ttname"><a href="background_8h.html">background.h</a></div></div>
+<div class="ttc" id="aclass_background_html"><div class="ttname"><a href="class_background.html">Background</a></div><div class="ttdef"><b>Definition:</b> background.h:6</div></div>
+<div class="ttc" id="aclass_ground_html"><div class="ttname"><a href="class_ground.html">Ground</a></div><div class="ttdef"><b>Definition:</b> ground.h:6</div></div>
 <div class="ttc" id="aclass_player_html"><div class="ttname"><a href="class_player.html">Player</a></div><div class="ttdef"><b>Definition:</b> player.h:6</div></div>
 <div class="ttc" id="aclass_renderer_html"><div class="ttname"><a href="class_renderer.html">Renderer</a></div><div class="ttdef"><b>Definition:</b> renderer.h:6</div></div>
-<div class="ttc" id="aclass_texture_html"><div class="ttname"><a href="class_texture.html">Texture</a></div><div class="ttdef"><b>Definition:</b> texture.h:6</div></div>
 <div class="ttc" id="aclass_window_html"><div class="ttname"><a href="class_window.html">Window</a></div><div class="ttdef"><b>Definition:</b> window.h:8</div></div>
-<div class="ttc" id="aclass_world_html"><div class="ttname"><a href="class_world.html">World</a></div><div class="ttdef"><b>Definition:</b> world.h:6</div></div>
-<div class="ttc" id="aclass_world_html_ad033f16454454d3ccfd3d9e0b65c6e6a"><div class="ttname"><a href="class_world.html#ad033f16454454d3ccfd3d9e0b65c6e6a">World::StartWorld</a></div><div class="ttdeci">void StartWorld(Renderer *renderer, Window *window)</div><div class="ttdef"><b>Definition:</b> world.cpp:54</div></div>
+<div class="ttc" id="aclass_world_html"><div class="ttname"><a href="class_world.html">World</a></div><div class="ttdef"><b>Definition:</b> world.h:11</div></div>
+<div class="ttc" id="aclass_world_html_ad033f16454454d3ccfd3d9e0b65c6e6a"><div class="ttname"><a href="class_world.html#ad033f16454454d3ccfd3d9e0b65c6e6a">World::StartWorld</a></div><div class="ttdeci">void StartWorld(Renderer *renderer, Window *window)</div><div class="ttdef"><b>Definition:</b> world.cpp:75</div></div>
+<div class="ttc" id="aground_8h_html"><div class="ttname"><a href="ground_8h.html">ground.h</a></div></div>
+<div class="ttc" id="aplatform_8h_html"><div class="ttname"><a href="platform_8h.html">platform.h</a></div></div>
 <div class="ttc" id="aplayer_8h_html"><div class="ttname"><a href="player_8h.html">player.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

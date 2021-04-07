@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['_7erenderer_35',['~Renderer',['../class_renderer.html#afeee408862d5bd6255a6882d47e6d5cd',1,'Renderer']]],
-  ['_7ewindow_36',['~Window',['../class_window.html#a245d821e6016fa1f6970ccbbedd635f6',1,'Window']]]
+  ['y_44',['y',['../class_background.html#a05d26e03f56c2a4d1a4a5c1cbf6410b3',1,'Background::y()'],['../class_platform.html#ae878583b72d4b009c09542ecb04f1342',1,'Platform::y()']]]
 ];

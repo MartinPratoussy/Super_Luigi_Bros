@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['renderer_67',['renderer',['../class_renderer.html#a4a9e4d101b69f92bf17877079ab72254',1,'Renderer']]]
+  ['h_89',['h',['../class_background.html#ac54bebe7c6e48d6b36d8a730a9cdc4b3',1,'Background::h()'],['../class_platform.html#ad435dbb264e8ff843e3ac8ebf5d66094',1,'Platform::h()']]]
 ];

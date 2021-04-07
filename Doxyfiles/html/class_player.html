@@ -76,21 +76,15 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8c19ef325952144e9ff6ff5fbd6e5cc2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a8c19ef325952144e9ff6ff5fbd6e5cc2">Player</a> (<a class="el" href="class_renderer.html">Renderer</a> *renderer, int <a class="el" href="class_player.html#ad285b3cb25e4a46ca944b9a416c1b13f">x</a>, int <a class="el" href="class_player.html#a6da29d6e3783c6028c92647bbde478f5">y</a>)</td></tr>
+<tr class="memitem:a8c19ef325952144e9ff6ff5fbd6e5cc2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a8c19ef325952144e9ff6ff5fbd6e5cc2">Player</a> (<a class="el" href="class_renderer.html">Renderer</a> *renderer, int x, int y)</td></tr>
 <tr class="separator:a8c19ef325952144e9ff6ff5fbd6e5cc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb5431b3f342c37e510e6873b2bfd609"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#acb5431b3f342c37e510e6873b2bfd609">GetEntity</a> (<a class="el" href="class_renderer.html">Renderer</a> *renderer)</td></tr>
-<tr class="separator:acb5431b3f342c37e510e6873b2bfd609"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add91fbdd8ed1ab447676ce96a9aab656"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#add91fbdd8ed1ab447676ce96a9aab656">GetEntity</a> (<a class="el" href="class_renderer.html">Renderer</a> *renderer, SDL_RendererFlip flip)</td></tr>
+<tr class="separator:add91fbdd8ed1ab447676ce96a9aab656"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ad285b3cb25e4a46ca944b9a416c1b13f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#ad285b3cb25e4a46ca944b9a416c1b13f">x</a></td></tr>
-<tr class="separator:ad285b3cb25e4a46ca944b9a416c1b13f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6da29d6e3783c6028c92647bbde478f5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a6da29d6e3783c6028c92647bbde478f5">y</a></td></tr>
-<tr class="separator:a6da29d6e3783c6028c92647bbde478f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5abd59bb439c373adcc8f9c8fd3b0e72"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a5abd59bb439c373adcc8f9c8fd3b0e72">w</a></td></tr>
-<tr class="separator:a5abd59bb439c373adcc8f9c8fd3b0e72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af109dc67097e88aac555ddaee574acc4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#af109dc67097e88aac555ddaee574acc4">h</a></td></tr>
-<tr class="separator:af109dc67097e88aac555ddaee574acc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80b5a277ce39137d549c5ecbcd02a190"><td class="memItemLeft" align="right" valign="top">SDL_Rect *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a80b5a277ce39137d549c5ecbcd02a190">playerRect</a></td></tr>
+<tr class="separator:a80b5a277ce39137d549c5ecbcd02a190"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8c19ef325952144e9ff6ff5fbd6e5cc2"></a>
@@ -128,8 +122,8 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="acb5431b3f342c37e510e6873b2bfd609"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acb5431b3f342c37e510e6873b2bfd609">&#9670;&nbsp;</a></span>GetEntity()</h2>
+<a id="add91fbdd8ed1ab447676ce96a9aab656"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add91fbdd8ed1ab447676ce96a9aab656">&#9670;&nbsp;</a></span>GetEntity()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -138,8 +132,18 @@ Public Attributes</h2></td></tr>
           <td class="memname">void Player::GetEntity </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_renderer.html">Renderer</a> *&#160;</td>
-          <td class="paramname"><em>renderer</em></td><td>)</td>
+          <td class="paramname"><em>renderer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">SDL_RendererFlip&#160;</td>
+          <td class="paramname"><em>flip</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -147,56 +151,14 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="af109dc67097e88aac555ddaee574acc4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af109dc67097e88aac555ddaee574acc4">&#9670;&nbsp;</a></span>h</h2>
+<a id="a80b5a277ce39137d549c5ecbcd02a190"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80b5a277ce39137d549c5ecbcd02a190">&#9670;&nbsp;</a></span>playerRect</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Player::h</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a5abd59bb439c373adcc8f9c8fd3b0e72"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5abd59bb439c373adcc8f9c8fd3b0e72">&#9670;&nbsp;</a></span>w</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Player::w</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad285b3cb25e4a46ca944b9a416c1b13f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad285b3cb25e4a46ca944b9a416c1b13f">&#9670;&nbsp;</a></span>x</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Player::x</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a6da29d6e3783c6028c92647bbde478f5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6da29d6e3783c6028c92647bbde478f5">&#9670;&nbsp;</a></span>y</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Player::y</td>
+          <td class="memname">SDL_Rect* Player::playerRect</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -204,8 +166,8 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="player_8h_source.html">player.h</a></li>
-<li><a class="el" href="player_8cpp.html">player.cpp</a></li>
+<li>D:/Documents/Dossier Martin/Divers/Super_Luigi_Bros/<a class="el" href="player_8h_source.html">player.h</a></li>
+<li>D:/Documents/Dossier Martin/Divers/Super_Luigi_Bros/<a class="el" href="player_8cpp.html">player.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
