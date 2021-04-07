@@ -1,18 +1,33 @@
 #include "world.h"
 
+void World::CreateBackground(Renderer* renderer, Window* window) {
+    this->background = new Background(renderer, window, 0, 0);
+}
+
 void World::CreatePlayer(Renderer* renderer)
 {
     this->player = new Player(renderer, 50, 50);
 }
 
-void World::RenderBackground(Renderer* renderer, Texture* backgroundTexture, SDL_Rect* destRect)
+void World::CreateGround(Renderer* renderer, Window* window)
 {
-    SDL_RenderCopy(renderer->renderer, backgroundTexture->texture, NULL, destRect);
+    this->ground = new Ground(renderer, window, 0, window->windowSurface->h - 50);
 }
 
-void World::MovePlayer(Player* player)
+void World::CreatePlatforms(Renderer* renderer)
+{
+    for (int i = 0; i < 3; i++)
+    {
+        int x = rand() % 400;
+        int y = rand() % 300;
+        platforms.push_back(new Platform(renderer, x ,y));
+    }
+}
+
+SDL_RendererFlip World::MovePlayer(Player* player, const Uint8 previousInput)
 {
     const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
+    SDL_RendererFlip flip = SDL_FLIP_NONE;
     // Vertical deplacement
     if (currentKeyStates[SDL_SCANCODE_UP]) {
         player->y--;
@@ -23,9 +38,11 @@ void World::MovePlayer(Player* player)
     // Horizontal deplacement
     else if (currentKeyStates[SDL_SCANCODE_LEFT]) {
         player->x--;
+        flip = (previousInput == SDL_SCANCODE_RIGHT) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE;
     }
     else if (currentKeyStates[SDL_SCANCODE_RIGHT]) {
         player->x++;
+        flip = (previousInput == SDL_SCANCODE_LEFT) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE;
     }
     // Diagonal deplacement Up
     else if (currentKeyStates[SDL_SCANCODE_UP] && currentKeyStates[SDL_SCANCODE_LEFT]) {
@@ -45,11 +62,8 @@ void World::MovePlayer(Player* player)
         player->y++;
         player->x++;
     }
-    else {
-        return;
-    }
+    return flip;
 }
-
 
 void World::StartWorld(Renderer* renderer, Window* window)
 {
@@ -58,13 +72,11 @@ void World::StartWorld(Renderer* renderer, Window* window)
     SDL_SetWindowIcon(window->window, ico->surface);
 
     // Declare elements of the game
+    CreateBackground(renderer, window);
     CreatePlayer(renderer);
-
-    Surface* backgroundSurface = new Surface("Ressources/background.png");    
-    Texture* backgroundTexture = new Texture(renderer, backgroundSurface);
-    SDL_Rect* backgroundRect = new SDL_Rect();
-    backgroundRect->w = backgroundSurface->surface->w;
-    backgroundRect->h = window->windowSurface->h;
+    CreateGround(renderer, window);
+    CreatePlatforms(renderer);
+    const Uint8 previousInput = SDL_SCANCODE_RIGHT;
 
     // Events loop
     SDL_Event events;
@@ -79,11 +91,14 @@ void World::StartWorld(Renderer* renderer, Window* window)
             }
         SDL_RenderClear(renderer->renderer);
 
-        RenderBackground(renderer, backgroundTexture, backgroundRect);
-        MovePlayer(player);
-
         /* Here comes the code */ 
-        this->player->GetEntity(renderer);
+        this->background->GetEntity(renderer);
+        this->ground->GetEntity(renderer);
+        for (Platform* platform : this->platforms) {
+            platform->GetEntity(renderer);
+        }
+        this->player->GetEntity(renderer, MovePlayer(player, previousInput));
+
 
         SDL_Delay(8);
         SDL_RenderPresent(renderer->renderer);

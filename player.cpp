@@ -10,7 +10,7 @@ Player::Player(Renderer* renderer, int x, int y)
 	this->h = 70;
 }
 
-void Player::GetEntity(Renderer* renderer)
+void Player::GetEntity(Renderer* renderer, SDL_RendererFlip flip)
 {
 	SDL_Rect* entity = new SDL_Rect();
 
@@ -18,5 +18,5 @@ void Player::GetEntity(Renderer* renderer)
 	entity->y = this->y;
 	entity->w = this->w;
 	entity->h = this->h;
-	SDL_RenderCopy(renderer->renderer, this->playerTexture->texture, NULL, entity);
+	SDL_RenderCopyEx(renderer->renderer, this->playerTexture->texture, NULL, entity, NULL, NULL, flip);
 }
