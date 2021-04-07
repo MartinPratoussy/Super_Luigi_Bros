@@ -10,3 +10,8 @@ Renderer::Renderer(Window* window)
     if (infoRenderer.flags & SDL_RENDERER_SOFTWARE) SDL_Log("CPU rendering enabled...");
     if (infoRenderer.flags & SDL_RENDERER_TARGETTEXTURE) SDL_Log("Rendering is allowed on textures...");
 }
+
+Renderer::~Renderer()
+{
+    SDL_DestroyRenderer(this->renderer);
+}
