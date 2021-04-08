@@ -163,6 +163,14 @@
     <ClInclude Include="window.h" />
     <ClInclude Include="world.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Ressources\background.png" />
+    <Image Include="Ressources\brickPlatform.png" />
+    <Image Include="Ressources\ground.png" />
+    <Image Include="Ressources\Louigi.jpg" />
+    <Image Include="Ressources\Louigi.png" />
+    <Image Include="Ressources\LouigiIcon.bmp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

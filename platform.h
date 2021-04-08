@@ -11,7 +11,6 @@ private:
 public:
 	Platform(Renderer* renderer, int x, int y);
 	void GetEntity(Renderer* renderer);
-	int x, y;
-	int w, h;
+	SDL_Rect* platformRect;
 };
 

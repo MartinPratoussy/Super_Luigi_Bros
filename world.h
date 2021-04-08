@@ -14,13 +14,14 @@ private:
 	Player* player;
 	Ground* ground;
 	std::vector<Platform*> platforms;
+	Uint8 previousInput = SDL_SCANCODE_RIGHT;
 
 	void CreateBackground(Renderer* renderer, Window* window);
 	void CreatePlayer(Renderer* renderer);
 	void CreateGround(Renderer* renderer, Window* window);
 	void CreatePlatforms(Renderer* renderer);
 
-	SDL_RendererFlip MovePlayer(Player* player, const Uint8 previousInput);
+	SDL_RendererFlip MovePlayer();
 	void CheckCollision();
 
 public:
