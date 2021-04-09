@@ -74,6 +74,9 @@
     <ClInclude Include="ground.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Ressources\background.png">
@@ -94,5 +97,13 @@
     <Image Include="Ressources\LouigiIcon.bmp">
       <Filter>Fichiers de ressources</Filter>
     </Image>
+    <Image Include="Ressources\Louigi.ico">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Super_Luigi_Bros.rc">
+      <Filter>Fichiers de ressources</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

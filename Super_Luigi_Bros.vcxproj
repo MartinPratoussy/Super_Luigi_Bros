@@ -158,6 +158,7 @@
     <ClInclude Include="platform.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="renderer.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="surface.h" />
     <ClInclude Include="texture.h" />
     <ClInclude Include="window.h" />
@@ -167,9 +168,13 @@
     <Image Include="Ressources\background.png" />
     <Image Include="Ressources\brickPlatform.png" />
     <Image Include="Ressources\ground.png" />
+    <Image Include="Ressources\Louigi.ico" />
     <Image Include="Ressources\Louigi.jpg" />
     <Image Include="Ressources\Louigi.png" />
     <Image Include="Ressources\LouigiIcon.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Super_Luigi_Bros.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
