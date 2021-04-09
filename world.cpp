@@ -18,8 +18,8 @@ void World::CreatePlatforms(Renderer* renderer)
 {
 	for (int i = 0; i < 3; i++)
 	{
-		int x = rand() % 400;
-		int y = rand() % 300;
+		int x = rand() % 400+100;
+		int y = rand() % 300+200;
 		platforms.push_back(new Platform(renderer, x, y));
 	}
 }
@@ -30,46 +30,19 @@ SDL_RendererFlip World::MovePlayer()
 	SDL_RendererFlip flip = SDL_FLIP_NONE;
 	// Vertical deplacement
 	if (currentKeyStates[SDL_SCANCODE_UP] && player->jumpRange > 0) {
-		this->player->direction = UP;
-		this->player->playerRect->y--;
-		this->player->jumpRange--;
-		this->previousInput = SDL_SCANCODE_UP;
+		this->player->GoUp();
 	}
 	// Horizontal deplacement
 	else if (currentKeyStates[SDL_SCANCODE_LEFT]) {
-		this->player->direction = LEFT;
-		this->player->playerRect->x--;
-		flip = (previousInput == SDL_SCANCODE_RIGHT) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE;
-		this->previousInput = SDL_SCANCODE_LEFT;
+		flip = SDL_FLIP_HORIZONTAL;
+		this->player->GoLeft();
 	}
 	else if (currentKeyStates[SDL_SCANCODE_RIGHT]) {
-		this->player->direction = RIGHT;
-		this->player->playerRect->x++;
-		flip = (previousInput == SDL_SCANCODE_LEFT) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE;
-		this->previousInput = SDL_SCANCODE_RIGHT;
-	}
-	// Diagonal deplacement Up
-	else if (currentKeyStates[SDL_SCANCODE_UP] && currentKeyStates[SDL_SCANCODE_LEFT]) {
-		this->player->playerRect->y--;
-		this->player->playerRect->x--;
-	}
-	else if (currentKeyStates[SDL_SCANCODE_UP] && currentKeyStates[SDL_SCANCODE_RIGHT]) {
-		this->player->playerRect->y--;
-		this->player->playerRect->x++;
-	}
-	// Diagonal deplacement Down
-	else if (currentKeyStates[SDL_SCANCODE_DOWN] && currentKeyStates[SDL_SCANCODE_LEFT]) {
-		this->player->playerRect->y++;
-		this->player->playerRect->x--;
-	}
-	else if (currentKeyStates[SDL_SCANCODE_DOWN] && currentKeyStates[SDL_SCANCODE_RIGHT]) {
-		this->player->playerRect->y++;
-		this->player->playerRect->x++;
+		this->player->GoRight();
 	}
 	else {
-		this->player->direction = DOWN;
-		this->player->playerRect->y++;
-		this->previousInput = SDL_SCANCODE_DOWN;
+		if (this->player->direction == LEFT) flip = SDL_FLIP_HORIZONTAL;
+		this->player->GoDown();
 	}
 	return flip;
 }
@@ -77,37 +50,38 @@ SDL_RendererFlip World::MovePlayer()
 void World::CheckCollision()
 {
 	// Collision with ground
-	if (SDL_HasIntersection(this->ground->groundRect, this->player->playerRect)) {
+	if ((SDL_HasIntersection(this->ground->groundRect, this->player->playerRect) && !this->player->isFalling)
+		| (SDL_HasIntersection(this->ground->groundRect, this->player->playerFlyingRect) && this->player->isFalling)) {
 		this->player->playerRect->y--;
+		this->player->playerFlyingRect->y--;
 		this->player->jumpRange = JUMP_RANGE_MAX;
+		this->player->isFalling = false;
 	}
 	// Collision with platform
 	for (Platform* platform : this->platforms) {
-		if (SDL_HasIntersection(platform->platformRect, this->player->playerRect)) {
+		if ((SDL_HasIntersection(platform->platformRect, this->player->playerRect) && !this->player->isFalling)
+			| (SDL_HasIntersection(platform->platformRect, this->player->playerFlyingRect) && this->player->isFalling)) {
 			switch (*this->player->direction)
 			{
 			case* UP: 
-				this->player->direction = DOWN;
-				this->player->playerRect->y++;
+				this->player->GoDown();
 				break;
-			case* DOWN:
-				this->player->direction = UP;
-				this->player->playerRect->y--;
-				this->player->jumpRange = JUMP_RANGE_MAX;
 				break;
 			case* LEFT:
-				this->player->direction = RIGHT;
-				this->player->playerRect->x++;
+				this->player->GoRight();
 				break;
 			case* RIGHT:
-				this->player->direction = LEFT;
-				this->player->playerRect->x--;
+				this->player->GoLeft();
 				break;
 			default:
+				this->player->GoUp();
+				this->player->jumpRange = JUMP_RANGE_MAX;
+				this->player->isFalling = false;
 				break;
 			}
 		}
 	}
+	if (this->player->jumpRange == 0) this->player->isFalling = true;
 }
 
 void World::StartWorld(Renderer* renderer, Window* window)

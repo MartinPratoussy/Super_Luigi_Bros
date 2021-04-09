@@ -14,7 +14,6 @@ private:
 	Player* player;
 	Ground* ground;
 	std::vector<Platform*> platforms;
-	Uint8 previousInput = SDL_SCANCODE_RIGHT;
 
 	void CreateBackground(Renderer* renderer, Window* window);
 	void CreatePlayer(Renderer* renderer);
